@@ -25,7 +25,7 @@ if (config.token == '' || config.prefix == '')
 
 client.on('ready', () => {
   console.log(`Bot operational.`);
-  client.user.setPresence({game:{name:config.prefix+"help", type:0}});
+  client.user.setPresence({game:{name:config.prefix +"help", type:0}});
 });
 
 client.login(config.token);
