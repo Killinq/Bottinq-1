@@ -109,7 +109,7 @@ client.on ('message', (message) =>
   if (command ==="ping")
   {
     message.delete(0);
-    message.channel.send(message.createdTimestamp - new Date().getTime() + "ms");
+    message.channel.send(new Date().getTime() - message.createdTimestamp + "ms");
   }
 
   if (command ==="thot")
