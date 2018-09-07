@@ -45,7 +45,10 @@ client.on ('message', (message) =>
 
   if (message.author.bot) return;
   if (message.channel.type === "dm") return;
-  if (!message.content.startsWith(config.prefix) && !message.content.startsWith("I'm")) return;
+  if (!message.content.startsWith(config.prefix) && !message.content.startsWith("I'm") && !message.content.startsWith("This is so sad"))
+  {
+    return;
+  }
   if (message.guild.id == proj0)
   {
     if (message.channel.id != doggo && message.channel.id != botSpam)
@@ -159,13 +162,12 @@ client.on ('message', (message) =>
     {
       message.delete(0);
       var sliced = message.content.slice(3);
-      console.log(sliced);
       reddit.fetchSubreddit(sliced).then((urls) =>
-      {
-        var memes = urls[0].urls;
-        var meme = memes[randomInt(0, memes.length-1)]
-        message.channel.send(meme);
-      }).catch(console.error);
+     {
+       var memes = urls[0].urls;
+       var meme = memes[randomInt(0, memes.length-1)]
+       message.channel.send(meme);
+     }).catch(console.error);
     }
 
    if (command ==="help")
@@ -180,19 +182,19 @@ client.on ('message', (message) =>
       \n ~cow (plus what you want it to say)")
       .setFooter("Powered by YaBoi™")
       .setTimestamp();
-     message.author.send({embed})
+     message.author.send({embed});
     }
 
     if (message.guild.id == config.melonMan || message.guild.id == config.botTest)
     {
-      var dad = message.content.slice(4)
+      var dad = message.content.slice(4);
       if (message.content.startsWith("I'm"))
       {
         message.channel.send("Hi " + dad + "," + " I'm dad!");
       }
-      if (message.content.startsWith("This is so sad"))
+      if (message.content.startsWith('This is so sad'))
       {
-        message.channel.send("Now playing Despacito https://www.youtube.com/watch?v=kJQP7kiw5Fk")
+        message.channel.send('Now playing Despacito ' + "https://www.youtube.com/watch?v=kJQP7kiw5Fk");
       }
     }
 });
