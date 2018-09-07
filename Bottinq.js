@@ -43,9 +43,12 @@ client.on ('message', (message) =>
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
+  //var msg = message.content.toLowerCase();
+
   if (message.author.bot) return;
+
   if (message.channel.type === "dm") return;
-  if (!message.content.startsWith(config.prefix) && !message.content.startsWith("I'm") && !message.content.startsWith("This is so sad"))
+  if (!message.content.startsWith(config.prefix) && !message.content.startsWith("I'm") && !message.content.toLowerCase().startsWith("This is so sad"))
   {
     return;
   }
@@ -94,7 +97,7 @@ client.on ('message', (message) =>
       message.channel.send("smh my head");
     }
 
-    if (message.content.startsWith("~no u"))
+    if (msg.startsWith("~no u"))
     {
       message.delete(0);
       message.channel.send("", {files:["https://cdn.discordapp.com/attachments/249299646906761226/439948625909645312/unknown.png"]});
