@@ -186,6 +186,13 @@ client.on ('message', (message) =>
     if (message.guild.id == config.melonMan || message.guild.id == config.botTest)
     {
       var dad = message.content.slice(4)
-      if (message.content.startsWith("I'm")) message.channel.send("Hi " + dad + "," + " I'm dad!");
+      if (message.content.startsWith("I'm"))
+      {
+        message.channel.send("Hi " + dad + "," + " I'm dad!");
+      }
+      if (message.content.startsWith("This is so sad"))
+      {
+        message.channel.send("Now playing Despacito https://www.youtube.com/watch?v=kJQP7kiw5Fk")
+      }
     }
 });
