@@ -43,15 +43,13 @@ client.on ('message', (message) =>
   const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
-  //var msg = message.content.toLowerCase();
-
   if (message.author.bot) return;
 
   if (message.channel.type === "dm") return;
-  if (!message.content.startsWith(config.prefix) && !message.content.startsWith("I'm") && !message.content.toLowerCase().startsWith("This is so sad"))
+  /*if (!message.content.startsWith(config.prefix) || !message.content.startsWith("I'm") || !message.content.toLowerCase().startsWith("This is so sad"))
   {
     return;
-  }
+  }*/
   if (message.guild.id == proj0)
   {
     if (message.channel.id != doggo && message.channel.id != botSpam)
@@ -97,11 +95,10 @@ client.on ('message', (message) =>
       message.channel.send("smh my head");
     }
 
-    if (msg.startsWith("~no u"))
+    if (message.content.startsWith("~no u"))
     {
       message.delete(0);
       message.channel.send("", {files:["https://cdn.discordapp.com/attachments/249299646906761226/439948625909645312/unknown.png"]});
-
     }
 
     if (command ==="sins")
@@ -188,16 +185,26 @@ client.on ('message', (message) =>
      message.author.send({embed});
     }
 
-    if (message.guild.id == config.melonMan || message.guild.id == config.botTest)
+    var dad = message.content.slice(4);
+    var start = message.content;
+    if (message.guild.id == config.melonMan || message.guild.id == config.botTest || message.guild.id == config.bean)
     {
-      var dad = message.content.slice(4);
-      if (message.content.startsWith("I'm"))
+      if (start.startsWith("i'm") || start.startsWith("I'm") || start.startsWith("I'M"))
       {
         message.channel.send("Hi " + dad + "," + " I'm dad!");
       }
-      if (message.content.startsWith('This is so sad'))
+      if (start.startsWith("Alexa play despacito") || start.startsWith("alexa play despacito") || start.startsWith("ALEXA PLAY DESPACITO"))
       {
-        message.channel.send('Now playing Despacito ' + "https://www.youtube.com/watch?v=kJQP7kiw5Fk");
+        var embed = new Discord.RichEmbed()
+          .setColor(0xe25822)
+          .setFooter("Powered by YaBoi™")
+          .setAuthor("Alexa", "https://images-na.ssl-images-amazon.com/images/I/41-v1fozy0L.jpg")
+          .setDescription('Now playing [Despacito](https://www.youtube.com/watch?v=kJQP7kiw5Fk)');
+
+        message.channel.send({embed});
       }
+
     }
+
+
 });
