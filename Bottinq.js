@@ -46,11 +46,13 @@ client.on ('message', (message) =>
 
   if (message.author.bot) return;
 
+  var msgLower = message.content.toLowerCase();
+
   if (message.channel.type === "dm") return;
-  /*if (!message.content.startsWith(config.prefix) || !message.content.startsWith("I'm") || !message.content.toLowerCase().startsWith("This is so sad"))
+  if (!msgLower.startsWith(config.prefix))
   {
     return;
-  }*/
+  }
   if (message.guild.id == proj0)
   {
     if (message.channel.id != doggo && message.channel.id != botSpam)
