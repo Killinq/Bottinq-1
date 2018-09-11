@@ -16,6 +16,7 @@ var tairaGameDevSever = "279771993681952769";
 var proj0 = "242000371818430476";
 var doggo = "382814812247162890";
 var botSpam = "435513599016828980";
+var messageID;
 
 
 if (config.token == '' || config.prefix == '')
@@ -187,13 +188,15 @@ client.on ('message', (message) =>
 
     var dad = message.content.slice(4);
     var start = message.content;
+
+
     if (message.guild.id == config.melonMan || message.guild.id == config.botTest || message.guild.id == config.bean)
     {
-      if (start.startsWith("i'm") || start.startsWith("I'm") || start.startsWith("I'M"))
+      if (start.toLowerCase().startsWith("i'm"))
       {
         message.channel.send("Hi " + dad + "," + " I'm dad!");
       }
-      if (start.startsWith("Alexa play despacito") || start.startsWith("alexa play despacito") || start.startsWith("ALEXA PLAY DESPACITO"))
+      if (start.toLowerCase().startsWith("alexa play despacito"))
       {
         var embed = new Discord.RichEmbed()
           .setColor(0xe25822)
@@ -204,7 +207,21 @@ client.on ('message', (message) =>
         message.channel.send({embed});
       }
 
-    }
 
+      if (start.toLowerCase().startsWith("what") || start.toLowerCase().startsWith("wat") || start.toLowerCase().startsWith("wut") || start.toLowerCase().startsWith("nani"))
+      {
+        if (messageID != null)
+        {
+          message.channel.fetchMessage(messageID)
+            .then(msg => message.channel.send("**" + msg.content.toUpperCase() + "**"))
+            .catch(console.error)
+        }
+
+      } else {
+        messageID = message.id;
+      }
+      messageID = message.id;
+
+    }
 
 });
