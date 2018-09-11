@@ -190,8 +190,8 @@ client.on ('message', (message) =>
     var start = message.content;
 
 
-    if (message.guild.id == config.melonMan || message.guild.id == config.botTest || message.guild.id == config.bean)
-    {
+  //if (message.guild.id == config.melonMan || message.guild.id == config.botTest || message.guild.id == config.bean)
+    //{
       if (start.toLowerCase().startsWith("i'm"))
       {
         message.channel.send("Hi " + dad + "," + " I'm dad!");
@@ -216,12 +216,11 @@ client.on ('message', (message) =>
             .then(msg => message.channel.send("**" + msg.content.toUpperCase() + "**"))
             .catch(console.error)
         }
-
       } else {
         messageID = message.id;
       }
       messageID = message.id;
 
-    }
+    //}
 
 });
