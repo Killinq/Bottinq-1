@@ -5,6 +5,7 @@ const client = new Discord.Client();
 const client1 = new Discord.Client();
 
 var config = require('./config.json');
+var nonPrefix = require('./NonPrefix.js')
 
 var https = require('https');
 var http = require('http');
@@ -16,7 +17,6 @@ var tairaGameDevSever = "279771993681952769";
 var proj0 = "242000371818430476";
 var doggo = "382814812247162890";
 var botSpam = "435513599016828980";
-var messageID;
 
 
 if (config.token == '' || config.prefix == '')
@@ -46,13 +46,16 @@ client.on ('message', (message) =>
 
   if (message.author.bot) return;
 
-  var msgLower = message.content.toLowerCase();
+  var msg = message.content;
 
   if (message.channel.type === "dm") return;
-  if (!msgLower.startsWith(config.prefix))
+
+  if (!msg.startsWith(config.prefix) && message.tagName != "NonPrefix")
   {
     return;
   }
+
+
   if (message.guild.id == proj0)
   {
     if (message.channel.id != doggo && message.channel.id != botSpam)
@@ -188,41 +191,5 @@ client.on ('message', (message) =>
      message.author.send({embed});
     }
 
-    var dad = message.content.slice(4);
-    var start = message.content;
-
-
-  //if (message.guild.id == config.melonMan || message.guild.id == config.botTest || message.guild.id == config.bean)
-    //{
-      if (start.toLowerCase().startsWith("i'm"))
-      {
-        message.channel.send("Hi " + dad + "," + " I'm dad!");
-      }
-      if (start.toLowerCase().startsWith("alexa play despacito"))
-      {
-        var embed = new Discord.RichEmbed()
-          .setColor(0xe25822)
-          .setFooter("Powered by YaBoi™")
-          .setAuthor("Alexa", "https://images-na.ssl-images-amazon.com/images/I/41-v1fozy0L.jpg")
-          .setDescription('Now playing [Despacito](https://www.youtube.com/watch?v=kJQP7kiw5Fk)');
-
-        message.channel.send({embed});
-      }
-
-
-      if (start.toLowerCase().startsWith("what") || start.toLowerCase().startsWith("wat") || start.toLowerCase().startsWith("wut") || start.toLowerCase().startsWith("nani"))
-      {
-        if (messageID != null)
-        {
-          message.channel.fetchMessage(messageID)
-            .then(msg => message.channel.send("**" + msg.content.toUpperCase() + "**"))
-            .catch(console.error)
-        }
-      } else {
-        messageID = message.id;
-      }
-      messageID = message.id;
-
-    //}
 
 });
