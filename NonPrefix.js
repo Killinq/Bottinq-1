@@ -50,18 +50,24 @@ client.on ('message', (message) =>
       message.channel.send({embed});
     }
 
-
-    if (msg.toLowerCase().startsWith("what") || msg.toLowerCase().startsWith("wat") || msg.toLowerCase().startsWith("wut") || msg.toLowerCase().startsWith("nani"))
+    if (message.guild.id == config.bean)
     {
-      if (messageID != null)
-      {
-        message.channel.fetchMessage(messageID)
-          .then(msg => message.channel.send("**" + msg.content.toUpperCase() + "**"))
-          .catch(console.error)
-      }
-    } else {
-      messageID = message.id;
+      return;
     }
-    messageID = message.id;
+    else
+    {
+      if (msg.toLowerCase().startsWith("what") || msg.toLowerCase().startsWith("wat") || msg.toLowerCase().startsWith("wut") || msg.toLowerCase().startsWith("nani"))
+      {
+        if (messageID != null)
+        {
+          message.channel.fetchMessage(messageID)
+            .then(msg => message.channel.send("**" + msg.content.toUpperCase() + "**"))
+            .catch(console.error)
+        }
+      } else {
+        messageID = message.id;
+      }
+    }
+
 
 });
