@@ -176,20 +176,33 @@ client.on ('message', (message) =>
      }).catch(console.error);
     }
 
-   if (command ==="help")
-   {
-     message.delete(0);
-     var embed = new Discord.RichEmbed()
-      .setColor(0xe25822)
-      .setTitle("Commands")
-      .setDescription(" ~avatar (plus the person's username that you want the avatar of) \
-      \n ~lenny \n ~gmt \n ~smh \n ~sins \
-      \n ~thot \n ~no u \n ~say (plus what you want to say) \
-      \n ~cow (plus what you want it to say)")
-      .setFooter("Powered by YaBoi™")
-      .setTimestamp();
-     message.author.send({embed});
+    if (command === "8ball")
+    {
+      var sliced = message.content.slice(7);
+      if (sliced == "")
+      {
+        message.channel.send("I may be a fortune teller but I can't read minds smh");
+      } else
+      {
+        var messageArray = ["Without a doubt!", "No way!", "No chance!", "Certainly not", "Pfft, nah", "Hell yeah!", "Perhaps :eyes:", "There might a chance :thinking:", "Definitely", "Do not count on it", "Affirmative", "The stars say yes"];
+        teller = messageArray[Math.floor(Math.random() * messageArray.length)]
+        message.channel.send(teller);
+      }
     }
 
+    if (command === "help")
+    {
+      message.delete(0);
+      var embed = new Discord.RichEmbed()
+        .setColor(0xe25822)
+        .setTitle("Commands")
+        .setDescription(" ~avatar (plus the person's username that you want the avatar of) \
+        \n ~lenny \n ~gmt \n ~smh \n ~sins \
+        \n ~thot \n ~no u \n ~say (plus what you want to say) \
+        \n ~cow (plus what you want it to say) \n ~8ball (plus what you want the bot to predict)")
+        .setFooter("Powered by YaBoi™")
+        .setTimestamp();
+      message.author.send({embed});
+    }
 
 });
