@@ -206,7 +206,7 @@ client.on ('message', (message) =>
         .setTitle("Commands")
         .setDescription(" ~avatar (plus the person's username that you want the avatar of) \
         \n ~lenny \n ~gmt \n ~smh \n ~sins \
-        \n ~thot \n ~no u \n ~say (plus what you want to say) \
+        \n ~thot \n ~no u \n ~r subbreddityouwanthere \n ~say (plus what you want to say) \
         \n ~cow (plus what you want it to say) \n ~8ball (plus what you want the bot to predict)")
         .setFooter("Powered by YaBoi™")
         .setTimestamp();
