@@ -184,9 +184,17 @@ client.on ('message', (message) =>
         message.channel.send("I may be a fortune teller but I can't read minds smh");
       } else
       {
-        var messageArray = ["Without a doubt!", "No way!", "No chance!", "Certainly not", "Pfft, nah", "Hell yeah!", "Perhaps :eyes:", "There might be a chance :thinking:", "Definitely", "Do not count on it", "Affirmative", "The stars say yes"];
-        teller = messageArray[Math.floor(Math.random() * messageArray.length)]
-        message.channel.send(teller);
+        if (Math.random() < 0.5)
+        {
+          var messageArray = ["Without a doubt!", "Hell yeah!", "Perhaps :eyes:", "There might be a chance :thinking:", "Definitely", "Affirmative", "The stars say yes"];
+          teller = messageArray[Math.floor(Math.random() * messageArray.length)];
+        } else
+        {
+          var messageArray = ["No way!", "No chance!", "Certainly not", "Pfft, nah", "Do not count on it", "Negative", "Nah :b:"]
+          teller = messageArray[Math.floor(Math.random() * messageArray.length)];
+        }
+
+        message.channel.send(":8ball: " + teller);
       }
     }
 
@@ -204,6 +212,5 @@ client.on ('message', (message) =>
         .setTimestamp();
       message.author.send({embed});
     }
-
 
 });
