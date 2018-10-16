@@ -77,12 +77,6 @@ client.on ('message', (message) =>
       message.channel.send({embed});
     }
 
-    if (command === 'lenny')
-    {
-      message.delete(0);
-      message.channel.send('( ͡° ͜ʖ ͡°)');
-    }
-
     if (command === 'gmt')
     {
       message.delete(0);
