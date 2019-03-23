@@ -2,6 +2,9 @@
   "name": "Bottinq",
   "version": "1.0.1",
   "description": "Killinq's bot.",
+  "engines" : {
+    "node" : "8.11.4"
+  }
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TheV0rtex/Bottinq"
